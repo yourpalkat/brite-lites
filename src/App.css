@@ -1,33 +1,193 @@
-.App {
-  text-align: center;
-}
+@import url('https://fonts.googleapis.com/css?family=Lato|Righteous&display=swap');
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
+body {
+  font-size: 125%;
+  font-family: 'Lato', sans-serif;
+  line-height: 1.5;
+  background-image: url("./assets/wood.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
   min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+font-family: 'Righteous', sans-serif;
+margin: 0;
+padding: 0;
+}
+
+h1 {
+  color: #ffffff;
+  font-size: 3.6rem;
+  text-shadow: 0 0 5px #ffffff;
+  line-height: 0.95;
+  align-self: center;
+}
+
+.wrapper {
+  width: 90%;
+  max-width: 1000px;
+  margin: 2rem auto;
+}
+
+header {
+  background-color: #151515;
+  padding: 1.5rem 3rem;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  justify-content: space-between;
+}
+
+.silver-border {
+  border-radius: 10px;
+  padding: .5rem;
+  background: linear-gradient(135deg, rgba(201,213,219,1) 0%,rgba(216,225,231,1) 50%,rgba(157,172,178,1) 50%,rgba(224,239,249,1) 100%);
+  box-shadow: -1px 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+main {
+  margin-top: 2rem;
+}
+
+.controls {
+  flex-basis: 60%;
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 1;
+  margin-left: 3rem;
+}
+
+.color-picker-block {
+  display: flex;
+  flex-wrap: wrap;
+  flex-basis: 35%;
+  flex-grow: 0;
+  flex-shrink: 0;
+  margin: 0 1rem 0 0;
+  padding: 0;
+}
+
+.bulb {
+  margin: .5rem;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  position: relative;
+}
+
+.bulb::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 5%;
+  width: 1rem;
+  height: 1rem;
+  border-radius:50%;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  border-top: 4px solid rgba(255, 255, 255, 0.7);
+}
+
+.bulb-color0 {
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0.9) 0%,rgba(0,0,0,0.9) 25%,rgba(0,0,0,0) 50%,rgba(0,0,0,0) 100%);
+  box-shadow: -1px 1px 3px black;
+}
+
+.bulb-color1 {
+  background-color: red;
+  box-shadow: 0 0 10px red;
+}
+
+.bulb-color2 {
+  background-color: orange;
+  box-shadow: 0 0 10px orange;
+}
+
+.bulb-color3 {
+  background-color: yellow;
+  box-shadow: 0 0 10px yellow;
+}
+  
+.bulb-color4 {
+    background-color: green;
+    box-shadow: 0 0 10px green;
+}
+
+.bulb-color5 {
+  background-color: blue;
+  box-shadow: 0 0 10px blue;
+}
+
+.bulb-color6 {
+  background-color: purple;
+  box-shadow: 0 0 10px purple;
+}
+
+.bulb-color7 {
+  background-color: pink;
+  box-shadow: 0 0 10px pink;
+}
+
+.bulb-color8 {
+  background-color: white;
+  box-shadow: 0 0 10px white;
+}
+
+.button-block {
+  display: flex;
+  flex-basis: 50%;
+  flex-grow: 1;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+.control-button {
+  appearance: none;
+  border: none;
+  font-family: 'Righteous', sans-serif;
   color: white;
+  text-shadow: 0 0 4px white;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  border-radius: 10px;
+  align-self: center;
+  padding: .5rem 1rem;
+  margin-left: 1rem;
+  display: block;
 }
 
-.App-link {
-  color: #61dafb;
+.button-clear {
+  background-color: darkred;
+  box-shadow: 0 0 5px darkred;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.button-save {
+  background-color: darkgreen;
+  box-shadow: 0 0 5px darkgreen;
+}
+
+.button-load {
+  background-color: darkorange;
+  box-shadow: 0 0 5px darkorange;
+}
+
+.light-board {
+  width: 100%;
+  height: 60vh;
+  background-color: #151515;
+  padding: 1rem;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(8, 2rem);
+  grid-template-rows: repeat(8, 2rem);
+  grid-gap: .75rem;
+  justify-content: center;
+  align-content: center;
 }

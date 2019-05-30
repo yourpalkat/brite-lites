@@ -9,20 +9,16 @@ class Main extends Component {
   
   // map over the global state's gridArray recursively to display a grid of turned-off bulb objects
   makeGrid = () => {
-    let displayArray = props.gridArray.map((row, rowIndex) => {
+    let displayArray = this.props.gridArray.map((row, rowIndex) => {
       return (row.map((column, colIndex) => {
         const keyString = rowIndex + "-" + colIndex;
         return (
-          <Bulb key={keyString} row={rowIndex} column={colIndex} selColor={props.selectedColor} assignedColor={props.gridArray[rowIndex][colIndex]} updateArrayColor={props.updateArrayColor} />
+          <Bulb key={keyString} row={rowIndex} column={colIndex} selColor={this.props.selectedColor} assignedColor={this.props.gridArray[rowIndex][colIndex]} updateArrayColor={this.props.updateArrayColor} />
         );
       }));
     });
+    return displayArray;
   }
-  
-  componentDidMount(){
-    this.makeGrid();
-  }
-
 
   render(){
     return (
@@ -30,7 +26,7 @@ class Main extends Component {
         <div className="wrapper">
           <div className="silver-border">
             <div className="light-board">
-              { this.displayArray }
+              { this.makeGrid() }
             </div>
           </div>
         </div>

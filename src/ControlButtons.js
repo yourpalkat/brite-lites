@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 class ControlButtons extends Component {
 
   clearBoard = () => {
-    console.log('clicky');
     this.props.resetGrid();
   }
 

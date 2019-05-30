@@ -8,31 +8,18 @@ import './App.css';
 class Bulb extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      color: this.props.assignedColor,
-    }
-  }
-
-  assignColor = () => {
-    this.setState({
-      color: this.props.selColor,
-    });
   }
 
   toggleColor = () => {
-    if(this.state.color === this.props.selColor) {
-      this.setState({ color: 0});
+    if(this.props.assignedColor === this.props.selColor) {
       this.props.updateArrayColor(this.props.row, this.props.column, 0);
     } else {
       this.props.updateArrayColor(this.props.row, this.props.column, this.props.selColor);
-      this.assignColor();
       }
-      // 'clear' works to clear the state's gridArray, but the bulb components aren't updating visually.
   }
 
   render() {
-    const bulbClass = "bulb bulb-color" + this.state.color;
+    const bulbClass = "bulb bulb-color" + this.props.assignedColor;
     return(
       <div onClick={this.toggleColor} className={bulbClass}></div>
     );

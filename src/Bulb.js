@@ -3,11 +3,11 @@ import './index.css';
 import './App.css';
 
 class Bulb extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
-      color: 0,
+      color: this.props.assignedColor,
     }
   }
 
@@ -21,7 +21,13 @@ class Bulb extends Component {
     if(this.state.color === this.props.selColor) {
       this.setState({ color: 0});
     } else {
-      this.setState({ color: this.props.selColor });
+      this.props.updateArrayColor(this.props.row, this.props.column);
+      this.assignColor();
+      console.log(this.assignedColor);
+      // this.setState({ color: this.props.selColor });
+      
+      // OK two things are wrong. the first click doesn't register, it takes two to set the grid
+      // 'clear' works to clear the state's gridArray, but the bulb components aren't updating visually.
     }
   }
 

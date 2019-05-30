@@ -35,16 +35,19 @@ class App extends Component {
     });
   }
 
-  changeArrayColor = (row, column, newColor) => {
-    const tempArray= [];
+  updateArrayColor = (row, column) => {
     // cant alter state.gridArray[x][y] directly. Duplicate it, then change the value in tempArray[x][y], then setState
-    tempArray = this.state.gridArray.map((row) => {
-      return (row.map(column))
+    let tempArray = this.state.gridArray.map((tempRow) => {
+      return (tempRow.map((tempColumn) => {
+        return (tempColumn);
+      }));
     });
-    tempArray[row][column] = newColor;
+
+    tempArray[row][column] = this.state.selectedColor;
     this.setState({
       gridArray: tempArray,
     });
+    console.log(this.state.gridArray);
   }
 
   changeSelectedColor = (newColor) => {
@@ -55,7 +58,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header changeSelectedColor={this.changeSelectedColor} resetGrid={this.newBlankArray} />
-        <Main selectedColor={this.state.selectedColor} gridArray={this.state.gridArray} />
+        <Main selectedColor={this.state.selectedColor} gridArray={this.state.gridArray} updateArrayColor={this.updateArrayColor} />
       </div>
     );
   }

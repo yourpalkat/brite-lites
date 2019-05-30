@@ -42,19 +42,21 @@ class App extends Component {
     const dbRef = firebase.database().ref();
     // ask user for a name to save it under
     const gridName = prompt("Please enter a name for your creation");
-    // map state.gridArray to a tempArray
-    let tempArray = this.state.gridArray.map((tempRow) => {
-      return (tempRow.map((tempColumn) => {
-        return (tempColumn);
-      }));
-    });
-    // make an object that contains that name and tempArray
-    const saveObject = {
-      pictureName: gridName,
-      pictureGrid: tempArray
-    };
-    // push that object to firebase
-    dbRef.push(saveObject);
+    if (gridName) {
+      // map state.gridArray to a tempArray
+      let tempArray = this.state.gridArray.map((tempRow) => {
+        return (tempRow.map((tempColumn) => {
+          return (tempColumn);
+        }));
+      });
+      // make an object that contains that name and tempArray
+      const saveObject = {
+        pictureName: gridName,
+        pictureGrid: tempArray
+      };
+      // push that object to firebase
+      dbRef.push(saveObject);
+    }
   }
 
   loadGrid = () => {
@@ -80,11 +82,7 @@ class App extends Component {
       this.setState({
         loadObjects: newState
       });
-
     });
-    // display list of object.pictureName
-    // user chooses one
-    // set state of gridArray to selected object.pictureArray
   }
 
   drawGrid = (chosenGrid) => {

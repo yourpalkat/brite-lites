@@ -11,6 +11,7 @@ class Header extends Component {
     this.state = {
       loadMenuHidden: true,
       modalHidden: true,
+      clearGrid: false,
     };
   }
 
@@ -51,7 +52,7 @@ class Header extends Component {
 
               <LoadMenu loadArray={this.props.loadArray} drawGrid={this.props.drawGrid} isHidden={this.state.loadMenuHidden} toggleLoad={this.toggleModal} />
 
-              <ConfirmModal isHidden={this.state.modalHidden} toggleModal={this.toggleModal} />
+              <ConfirmModal isHidden={this.state.modalHidden} toggleModal={this.toggleModal} clearGrid={this.state.clearGrid} resetGrid={this.props.resetGrid} />
             </div>
           </header>
         </div>

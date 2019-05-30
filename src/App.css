@@ -244,6 +244,10 @@ main {
   font-size: 1.6rem;
 }
 
+.loadMenu .control-button {
+  margin-left: 0;
+}
+
 .loadItemButton:hover,
 .loadItemButton:focus {
   color: orange;

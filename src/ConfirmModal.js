@@ -11,8 +11,8 @@ class ConfirmModal extends Component {
   }
   
   proceedModal = () => {
-    // this.props.action();
     this.props.toggleModal('modal');
+    this.props.resetGrid();
   }
 
   render() {

@@ -4,7 +4,6 @@ class ControlButtons extends Component {
 
   clearBoard = () => {
     this.props.toggleModal('modal');
-    // this.props.resetGrid();
   }
 
   saveGrid = () => {

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import firebase from './firebase.js';
 import './index.css';
 import './App.css';
 import Header from './Header.js';
@@ -35,6 +36,26 @@ class App extends Component {
     });
   }
 
+  saveGridArray = () => {
+    // create ref to firebase
+    const dbRef = firebase.database().ref();
+    // ask user for a name to save it under
+    const gridName = prompt("Please enter a name for your creation");
+    // map state.gridArray to a tempArray
+    let tempArray = this.state.gridArray.map((tempRow) => {
+      return (tempRow.map((tempColumn) => {
+        return (tempColumn);
+      }));
+    });
+    // make an object that contains that name and tempArray
+    const saveObject = {
+      pictureName: gridName,
+      pictureGrid: tempArray
+    };
+    // push that object to firebase
+    dbRef.push(saveObject);
+  }
+
   updateArrayColor = (row, column, newColor) => {
     // cant alter state.gridArray[x][y] directly. Duplicate it, then change the value in tempArray[x][y], then setState
     let tempArray = this.state.gridArray.map((tempRow) => {
@@ -57,7 +78,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header changeSelectedColor={this.changeSelectedColor} resetGrid={this.newBlankArray} />
+        <Header changeSelectedColor={this.changeSelectedColor} resetGrid={this.newBlankArray} saveGrid={this.saveGridArray} />
         <Main selectedColor={this.state.selectedColor} gridArray={this.state.gridArray} updateArrayColor={this.updateArrayColor} />
       </div>
     );

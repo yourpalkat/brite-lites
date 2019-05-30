@@ -22,7 +22,7 @@ const Header = (props) => {
               <ColorPicker color={8} changeColor={props.changeSelectedColor} />
             </div>
 
-            <ControlButtons selectedColor={props.selectedColor} resetGrid={props.resetGrid} />
+            <ControlButtons selectedColor={props.selectedColor} resetGrid={props.resetGrid} saveGrid={props.saveGrid} />
           </div>
         </header>
       </div>

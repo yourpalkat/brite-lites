@@ -11,7 +11,13 @@ class Bulb extends Component {
     }
   }
 
-  toggleOn = () => {
+  assignColor = () => {
+    this.setState({
+      color: this.props.assignedColor,
+    });
+  }
+
+  toggleColor = () => {
     if(this.state.color === this.props.selColor) {
       this.setState({ color: 0});
     } else {
@@ -22,7 +28,7 @@ class Bulb extends Component {
   render() {
     const bulbClass = "bulb bulb-color" + this.state.color;
     return(
-      <div onClick={this.toggleOn} className={bulbClass}></div>
+      <div onClick={this.toggleColor} className={bulbClass}></div>
     );
   }
 }

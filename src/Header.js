@@ -1,5 +1,6 @@
 import React from 'react';
 import ColorPicker from './ColorPicker';
+import ControlButtons from './ControlButtons.js';
 
 const Header = (props) => {
   
@@ -21,11 +22,7 @@ const Header = (props) => {
               <ColorPicker color={8} changeColor={props.changeSelectedColor} />
             </div>
 
-            <div className="button-block">
-              <button className="control-button button-clear">Clear</button>
-              <button className="control-button button-load">Load</button>
-              <button className="control-button button-save">Save</button>
-            </div>
+            <ControlButtons selectedColor={props.selectedColor} resetGrid={props.resetGrid} />
           </div>
         </header>
       </div>

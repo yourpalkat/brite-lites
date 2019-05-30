@@ -13,7 +13,7 @@ class LoadListItem extends Component {
   render() {
     return (
       <div className="loadItem">
-        <button onClick={this.selectPicture}>{this.props.name}</button>
+        <button onClick={this.selectPicture} className="loadItemButton">{this.props.name}</button>
       </div>
     );
   }

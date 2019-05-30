@@ -161,7 +161,7 @@ main {
   align-self: center;
   padding: .5rem 1rem;
   margin-left: 1rem;
-  display: block;
+  /* display: block; */
 }
 
 .button-clear {
@@ -193,27 +193,19 @@ main {
   align-content: center;
 }
 
-.loadMenu {
+.loadMenu,
+.confirmModal {
   position: absolute;
   top: 0;
   bottom: 0;
   right: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.4);
   z-index: 900;
 }
 
 .loadMenuBody {
-  background-color: #fff;
-  border-radius: 10px;
-  position: relative;
-  width: 60%;
   max-height: 80vh;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 2rem;
-  text-align: center;
   overflow: scroll;
 }
 
@@ -221,24 +213,39 @@ main {
   display: none;
 }
 
-.confirmModal {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  background-color: rgba(0, 0, 0, 0.7);
-  z-index: 900;
+.modalBody {
+  background: #151515;
+  color: #fff;
+  text-align: center;
+  padding: 2rem;
 }
 
-.modalBody {
-  background: #fff;
-  text-align: center;
+.modalBorder {
   position: relative;
   width: 60%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  border-radius: 10px;
-  padding: 2rem;
+}
+
+.loadMenuBody h2 {
+  text-shadow: 0px 0px 2px #fff;
+}
+
+.loadItem {
+  margin: 1rem auto 1.5rem;
+}
+
+.loadItemButton {
+  appearance: none;
+  border: none;
+  background-color: transparent;
+  color: white;
+  font-size: 1.6rem;
+}
+
+.loadItemButton:hover,
+.loadItemButton:focus {
+  color: orange;
+  text-shadow: 0px 0px 4px orange;
 }

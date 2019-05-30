@@ -12,6 +12,7 @@ class ControlButtons extends Component {
 
   loadGrid = () => {
     this.props.loadGrid();
+    this.props.toggleLoad();
   }
 
 

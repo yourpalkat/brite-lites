@@ -117,8 +117,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header changeSelectedColor={this.changeSelectedColor} resetGrid={this.newBlankArray} saveGrid={this.saveGridArray} loadGrid={this.loadGrid} />
-        <Main selectedColor={this.state.selectedColor} gridArray={this.state.gridArray} updateArrayColor={this.updateArrayColor} loadArray={this.state.loadObjects} drawGrid={this.drawGrid} />
+        <Header changeSelectedColor={this.changeSelectedColor} resetGrid={this.newBlankArray} saveGrid={this.saveGridArray} loadGrid={this.loadGrid} loadArray={this.state.loadObjects} drawGrid={this.drawGrid} />
+        <Main selectedColor={this.state.selectedColor} gridArray={this.state.gridArray} updateArrayColor={this.updateArrayColor} />
       </div>
     );
   }

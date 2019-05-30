@@ -40,6 +40,7 @@ header {
   padding: 1.5rem 3rem;
   display: flex;
   justify-content: space-between;
+  position: relative;
 }
 
 .silver-border {
@@ -190,7 +191,6 @@ main {
   grid-gap: .75rem;
   justify-content: center;
   align-content: center;
-  position: relative;
 }
 
 .loadMenu {
@@ -206,6 +206,7 @@ main {
   text-align: center;
   color: #000;
   overflow: scroll;
+  z-index: 99;
 }
 
 .isHidden {

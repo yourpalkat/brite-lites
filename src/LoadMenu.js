@@ -4,22 +4,16 @@ import LoadListItem from './LoadListItem.js'
 class LoadMenu extends Component {
   constructor(props){
     super(props);
-
-    this.state = {
-      isHidden: false,
-    };
   }
 
   closeMenu = () => {
-    this.setState({
-      isHidden: true,
-    });
+    this.props.toggleLoad();
   }
 
   makeOptionList = () => {
     let optionList = this.props.loadArray.map((pictureObject, index) => {
       return(
-        <LoadListItem name={pictureObject.pictureName} drawGrid={this.props.drawGrid} pictureGrid={pictureObject.pictureGrid} closeMenu={this.closeMenu} />
+        <LoadListItem key={'ll'+ index} name={pictureObject.pictureName} drawGrid={this.props.drawGrid} pictureGrid={pictureObject.pictureGrid} closeMenu={this.closeMenu} />
       )
     });
 
@@ -28,7 +22,7 @@ class LoadMenu extends Component {
 
   render(){
     return(
-      <div className={"loadMenu " + (this.state.isHidden ? 'isHidden': null)}>
+      <div className={"loadMenu " + (this.props.isHidden ? 'isHidden': null)}>
         <h2>Choose a picture!</h2>
         { this.makeOptionList() }
       </div>

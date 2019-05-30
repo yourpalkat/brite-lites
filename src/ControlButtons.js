@@ -3,7 +3,8 @@ import React, { Component } from 'react';
 class ControlButtons extends Component {
 
   clearBoard = () => {
-    this.props.resetGrid();
+    this.props.toggleModal('modal');
+    // this.props.resetGrid();
   }
 
   saveGrid = () => {
@@ -12,7 +13,7 @@ class ControlButtons extends Component {
 
   loadGrid = () => {
     this.props.loadGrid();
-    this.props.toggleLoad();
+    this.props.toggleModal('load');
   }
 
 

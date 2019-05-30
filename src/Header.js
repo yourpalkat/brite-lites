@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ColorPicker from './ColorPicker';
 import ControlButtons from './ControlButtons.js';
 import LoadMenu from './LoadMenu.js';
+import ConfirmModal from './ConfirmModal.js';
 
 class Header extends Component {
   constructor(props){
@@ -9,14 +10,22 @@ class Header extends Component {
 
     this.state = {
       loadMenuHidden: true,
+      modalHidden: true,
     };
   }
 
-  toggleLoadMenu = () => {
-    const newState = !this.state.loadMenuHidden;
-    this.setState({
-      loadMenuHidden: newState,
-    });
+  toggleModal = (which) => {
+    if (which === 'modal') {
+      const newState = !this.state.modalHidden;
+      this.setState({
+        modalHidden: newState,
+      });
+    } else if (which === 'load') {
+      const newState = !this.state.loadMenuHidden;
+      this.setState({
+        loadMenuHidden: newState,
+      });
+    }
   }
 
   render() {
@@ -38,9 +47,11 @@ class Header extends Component {
                 <ColorPicker color={8} changeColor={this.props.changeSelectedColor} />
               </div>
   
-              <ControlButtons selectedColor={this.props.selectedColor} resetGrid={this.props.resetGrid} saveGrid={this.props.saveGrid} loadGrid={this.props.loadGrid} drawGrid={this.props.drawGrid} toggleLoad={this.toggleLoadMenu} />
+              <ControlButtons selectedColor={this.props.selectedColor} resetGrid={this.props.resetGrid} saveGrid={this.props.saveGrid} loadGrid={this.props.loadGrid} drawGrid={this.props.drawGrid} toggleLoad={this.toggleLoadMenu} toggleModal={this.toggleModal} />
 
-              <LoadMenu loadArray={this.props.loadArray} drawGrid={this.props.drawGrid} isHidden={this.state.loadMenuHidden} toggleLoad={this.toggleLoadMenu} />
+              <LoadMenu loadArray={this.props.loadArray} drawGrid={this.props.drawGrid} isHidden={this.state.loadMenuHidden} toggleLoad={this.toggleModal} />
+
+              <ConfirmModal isHidden={this.state.modalHidden} toggleModal={this.toggleModal} />
             </div>
           </header>
         </div>

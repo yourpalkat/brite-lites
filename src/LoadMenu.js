@@ -7,7 +7,7 @@ class LoadMenu extends Component {
   }
 
   closeMenu = () => {
-    this.props.toggleLoad();
+    this.props.toggleLoad('load');
   }
 
   makeOptionList = () => {
@@ -23,8 +23,11 @@ class LoadMenu extends Component {
   render(){
     return(
       <div className={"loadMenu " + (this.props.isHidden ? 'isHidden': null)}>
-        <h2>Choose a picture!</h2>
-        { this.makeOptionList() }
+        <div className="loadMenuBody">
+          <h2>Choose a picture!</h2>
+          { this.makeOptionList() }
+          <button onClick={this.closeMenu} className="control-button button-clear" >Cancel</button>
+        </div>
       </div>
     );
   }

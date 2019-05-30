@@ -40,7 +40,7 @@ header {
   padding: 1.5rem 3rem;
   display: flex;
   justify-content: space-between;
-  position: relative;
+  /* position: relative; */
 }
 
 .silver-border {
@@ -194,21 +194,51 @@ main {
 }
 
 .loadMenu {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 900;
+}
+
+.loadMenuBody {
   background-color: #fff;
   border-radius: 10px;
-  position: absolute;
+  position: relative;
+  width: 60%;
+  max-height: 80vh;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 80%;
-  height: 80%;
-  padding: 1rem;
+  padding: 2rem;
   text-align: center;
-  color: #000;
   overflow: scroll;
-  z-index: 99;
 }
 
 .isHidden {
   display: none;
+}
+
+.confirmModal {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 900;
+}
+
+.modalBody {
+  background: #fff;
+  text-align: center;
+  position: relative;
+  width: 60%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  padding: 2rem;
 }

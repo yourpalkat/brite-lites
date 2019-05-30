@@ -3,17 +3,17 @@ import './index.css';
 import './App.css';
 
 class Bulb extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
-      color: 0,
+      color: this.props.initialColor,
     }
   }
 
-  assignColor = () => {
+  assignColor = (newColor) => {
     this.setState({
-      color: this.props.assignedColor,
+      color: newColor,
     });
   }
 
@@ -27,6 +27,7 @@ class Bulb extends Component {
 
   render() {
     const bulbClass = "bulb bulb-color" + this.state.color;
+    console.log('from bulb', this.props.selColor);
     return(
       <div onClick={this.toggleColor} className={bulbClass}></div>
     );

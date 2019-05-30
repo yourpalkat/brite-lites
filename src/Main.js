@@ -1,5 +1,4 @@
 import React from 'react';
-import Bulb from './Bulb.js';
 
 const Main = (props) => {
 
@@ -9,16 +8,7 @@ const Main = (props) => {
       <div className="wrapper">
         <div className="silver-border">
           <div className="light-board">
-            {
-              props.gridArray.map((row, rowIndex) => {
-                return (row.map((column, colIndex) => {
-                  const keyString = rowIndex + "-" + colIndex;
-                  return (
-                    <Bulb key={keyString} selColor={props.selectedColor} />
-                  );
-                }))
-              })
-            }
+            { props.gridArray }
           </div>
         </div>
       </div>

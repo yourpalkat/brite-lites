@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Bulb from './Bulb.js';
+import LoadMenu from './LoadMenu.js';
 
 class Main extends Component {
   constructor(props) {
@@ -27,6 +28,7 @@ class Main extends Component {
           <div className="silver-border">
             <div className="light-board">
               { this.makeGrid() }
+              <LoadMenu loadArray={this.props.loadArray} drawGrid={this.props.drawGrid} />
             </div>
           </div>
         </div>

@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import './index.css';
 import './App.css';
+// Bulb receives key,  row, column, selColor (the global state: selectedColor), 
+// assignedColor (the color at this [row, column] position in the global state array), 
+// and updateArrayColor (a callback to the global updateArrayColor() method) via props
 
 class Bulb extends Component {
   constructor(props) {
@@ -13,22 +16,19 @@ class Bulb extends Component {
 
   assignColor = () => {
     this.setState({
-      color: this.props.assignedColor,
+      color: this.props.selColor,
     });
   }
 
   toggleColor = () => {
     if(this.state.color === this.props.selColor) {
       this.setState({ color: 0});
+      this.props.updateArrayColor(this.props.row, this.props.column, 0);
     } else {
-      this.props.updateArrayColor(this.props.row, this.props.column);
+      this.props.updateArrayColor(this.props.row, this.props.column, this.props.selColor);
       this.assignColor();
-      console.log(this.assignedColor);
-      // this.setState({ color: this.props.selColor });
-      
-      // OK two things are wrong. the first click doesn't register, it takes two to set the grid
+      }
       // 'clear' works to clear the state's gridArray, but the bulb components aren't updating visually.
-    }
   }
 
   render() {

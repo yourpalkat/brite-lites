@@ -1,29 +1,43 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Bulb from './Bulb.js';
 
-const Main = (props) => {
+class Main extends Component {
+  constructor(props) {
+    super(props)
+    
+  }
+  
+  // map over the global state's gridArray recursively to display a grid of turned-off bulb objects
+  makeGrid = () => {
+    let displayArray = props.gridArray.map((row, rowIndex) => {
+      return (row.map((column, colIndex) => {
+        const keyString = rowIndex + "-" + colIndex;
+        return (
+          <Bulb key={keyString} row={rowIndex} column={colIndex} selColor={props.selectedColor} assignedColor={props.gridArray[rowIndex][colIndex]} updateArrayColor={props.updateArrayColor} />
+        );
+      }));
+    });
+  }
+  
+  componentDidMount(){
+    this.makeGrid();
+  }
 
-let displayArray = props.gridArray.map((row, rowIndex) => {
-  return (row.map((column, colIndex) => {
-    const keyString = rowIndex + "-" + colIndex;
+
+  render(){
     return (
-      <Bulb key={keyString} row={rowIndex} column={colIndex} selColor={props.selectedColor} assignedColor={props.gridArray[rowIndex][colIndex]} updateArrayColor={props.updateArrayColor} />
-    );
-  }))
-})
-
-  // then we map over that array recursively to display a grid of turned-off bulb objects
-  return (
-    <main>
-      <div className="wrapper">
-        <div className="silver-border">
-          <div className="light-board">
-            { displayArray }
+      <main>
+        <div className="wrapper">
+          <div className="silver-border">
+            <div className="light-board">
+              { this.displayArray }
+            </div>
           </div>
         </div>
-      </div>
-    </main>
-  );
+      </main>
+    );
+
+  }
 }
 
 export default Main;

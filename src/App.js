@@ -8,7 +8,9 @@ import Main from './Main.js';
 class App extends Component {
   constructor() {
     super();
-
+    // selectedColor is the current draw color, white by default
+    // gridArray holds the on/off state and color of every bulb component in the picture
+    // loadObjects gets filled with the pictures on firebase availalble to load
     this.state = {
       selectedColor: 8,
       gridArray: [],
@@ -21,7 +23,7 @@ class App extends Component {
   }
 
   // this function just makes a dummy blank array as an empty start state
-  // the main screen is an 8x8 grid of dots; the array is 8 items with each item as an array of 8
+  // the main screen is an 8x8 grid of Bulb components; the array is 8 items with each item as an array of 8
   newBlankArray = () => {
     const tempArray = [];
     for (let i = 0; i < 8; i++) {
@@ -37,28 +39,34 @@ class App extends Component {
     });
   }
 
+  // saves the current state of state.gridArray to firebase with a user-submitted name
   saveGridArray = () => {
     // create ref to firebase
     const dbRef = firebase.database().ref();
     // ask user for a name to save it under
-    const gridName = prompt("Please enter a name for your creation");
+    const gridName = prompt("Please enter a name for your creation! Letters, numbers or underscores only, please.");
     if (gridName) {
-      // map state.gridArray to a tempArray
-      let tempArray = this.state.gridArray.map((tempRow) => {
-        return (tempRow.map((tempColumn) => {
-          return (tempColumn);
-        }));
-      });
-      // make an object that contains that name and tempArray
-      const saveObject = {
-        pictureName: gridName,
-        pictureGrid: tempArray
-      };
-      // push that object to firebase
-      dbRef.push(saveObject);
+      // only allow A-Z, a-z, 0-9, or _
+      const regex = /[^\w]/;
+      if ( gridName.search(regex) == -1 ) {
+        // map state.gridArray to a tempArray
+        let tempArray = this.state.gridArray.map((tempRow) => {
+          return (tempRow.map((tempColumn) => {
+            return (tempColumn);
+          }));
+        });
+        // make an object that contains that name and tempArray
+        const saveObject = {
+          pictureName: gridName,
+          pictureGrid: tempArray
+        };
+        // push that object to firebase
+        dbRef.push(saveObject);
+      }
     }
   }
 
+  // connects to firebase, adds the list of available pictures to load to the global state's loadObjects array
   loadGrid = () => {
     // create ref to database
     const dbRef = firebase.database().ref();
@@ -92,26 +100,29 @@ class App extends Component {
     });
   }
 
+  // called when a bulb component in Main is clicked on and changes color
   updateArrayColor = (row, column, newColor) => {
-    // cant alter state.gridArray[x][y] directly. Duplicate it, then change the value in tempArray[x][y], then setState
+    // we can't alter a single value in the global state's grid array directly, so let's duplicate it
     let tempArray = this.state.gridArray.map((tempRow) => {
       return (tempRow.map((tempColumn) => {
         return (tempColumn);
       }));
     });
-
+    // target the spot in our temporary array using the row & column vallues passed in, and set it to the passed-in color
     tempArray[row][column] = newColor;
+    // make the global state gridArray equal to our updated temporary array
     this.setState({
       gridArray: tempArray,
     });
     ;
   }
 
+  // called by the color selector component in Header; changes the global state of selectedColor, needed to update arrayColor
   changeSelectedColor = (newColor) => {
     this.setState({ selectedColor: newColor });
   }
 
-
+  // actually draws our app
   render() {
     return (
       <div className="App">

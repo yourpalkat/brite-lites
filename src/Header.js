@@ -4,6 +4,9 @@ import ControlButtons from './ControlButtons.js';
 import LoadMenu from './LoadMenu.js';
 import ConfirmModal from './ConfirmModal.js';
 
+// Header is the component that holds the app title, the color picker components, the load/save/clear buttons,
+// and the modals. It gets the changeSelectedColor, resetGrid, saveGrid, loadGrid, loadArray and drawGrid methods
+// and the selectedColor global state passed to it by props
 class Header extends Component {
   constructor(props){
     super(props);
@@ -15,13 +18,17 @@ class Header extends Component {
     };
   }
 
+  // turns the modal on or off. Passed to ControlButtons, ConfirmModal and LoadMenu Components.
   toggleModal = (which) => {
+    // 'which' is which thing is being asked about: clear or load
     if (which === 'modal') {
+      // clear the modal by setting this component's modalHidden to its opposite
       const newState = !this.state.modalHidden;
       this.setState({
         modalHidden: newState,
       });
     } else if (which === 'load') {
+      // if the user is being asked about loading, then show the load modal
       const newState = !this.state.loadMenuHidden;
       this.setState({
         loadMenuHidden: newState,

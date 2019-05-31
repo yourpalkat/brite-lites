@@ -1,15 +1,19 @@
 import React, { Component } from 'react';
 
+// this Component makes the three load/save/clear buttons
+// it gets the resetGrid, loadGrid, saveGrid, drawGrid and toggleModal methods 
+// and the global selectedColor state passed to it via props
 class ControlButtons extends Component {
-
+  // handler for 'clear' button calls the toggleModal method of Header.js
   clearBoard = () => {
     this.props.toggleModal('modal');
   }
-
+  // handler for 'save' button calls the saveGridArray method of App.js
   saveGrid = () => {
     this.props.saveGrid();
   }
 
+  // handler for 'load' button calls the toggleModal method of Header.js and the loadGrid method of App.js
   loadGrid = () => {
     this.props.loadGrid();
     this.props.toggleModal('load');

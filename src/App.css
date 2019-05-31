@@ -1,5 +1,35 @@
 @import url('https://fonts.googleapis.com/css?family=Lato|Righteous&display=swap');
 
+html {
+  --color-text: rgb(255, 255, 255);
+  --color-background: #151515;
+
+  --color-yellow-dark: rgb(218, 218, 8);
+  --color-yellow-mid: rgb(255, 255, 0);
+  --color-yellow-bright: rgb(252, 252, 100);
+  --color-orange-dark: rgb(247, 136, 0);
+  --color-orange-mid: rgb(255, 165, 0);
+  --color-orange-bright: rgb(255, 180, 17);
+  --color-red-dark: rgb(210, 0, 0);
+  --color-red-mid: rgb(255, 0, 0);
+  --color-red-bright: rgb(255, 51, 28);
+  --color-green-dark: rgb(20, 136, 20);
+  --color-green-mid: rgb(9, 157, 9);
+  --color-green-bright: rgb(62, 186, 62);
+  --color-blue-dark: rgb(1, 28, 232);
+  --color-blue-mid: rgb(0, 81, 255);
+  --color-blue-bright: rgb(19, 105, 255);
+  --color-purple-dark: rgb(91, 1, 130);
+  --color-purple-mid: rgb(135, 1, 135);
+  --color-purple-bright: rgb(179, 15, 174);
+  --color-pink-dark: rgb(255, 164, 180);
+  --color-pink-mid: rgb(255, 192, 203);
+  --color-pink-bright: rgb(252, 206, 214);
+  --color-white-dark: rgb(229, 240, 242);
+  --color-white-mid: rgb(238, 250, 252);
+  --color-white-bright: rgb(255, 255, 255);
+}
+
 body {
   font-size: 125%;
   font-family: 'Lato', sans-serif;
@@ -16,15 +46,15 @@ h3,
 h4,
 h5,
 h6 {
-font-family: 'Righteous', sans-serif;
-margin: 0;
-padding: 0;
+  margin: 0;
+  padding: 0;
+  font-family: 'Righteous', sans-serif;
+  color: var(--color-text);
 }
 
 h1 {
-  color: #ffffff;
   font-size: 3.6rem;
-  text-shadow: 0 0 5px #ffffff;
+  text-shadow: 0 0 5px var(--color-text);
   line-height: 0.95;
   align-self: center;
   white-space: nowrap;
@@ -38,7 +68,7 @@ h1 {
 }
 
 header {
-  background-color: #151515;
+  background-color: var(--color-background);
   padding: 1.5rem 3rem;
   display: flex;
   justify-content: space-between;
@@ -95,43 +125,43 @@ main {
 }
 
 .bulb-color1 {
-  background-color: red;
-  box-shadow: 0 0 10px red;
+  background: radial-gradient(ellipse at center, var(--color-red-bright) 0%, var(--color-red-bright) 20%, var(--color-red-mid) 55%, var(--color-red-mid) 100%);
+  box-shadow: 0 0 10px var(--color-red-mid);
 }
 
 .bulb-color2 {
-  background-color: orange;
-  box-shadow: 0 0 10px orange;
+  background: radial-gradient(ellipse at center, var(--color-orange-bright) 0%, var(--color-orange-bright) 20%, var(--color-orange-mid) 55%, var(--color-orange-mid) 100%);
+  box-shadow: 0 0 10px var(--color-orange-mid);
 }
 
 .bulb-color3 {
-  background-color: yellow;
-  box-shadow: 0 0 10px yellow;
+  background: radial-gradient(ellipse at center, var(--color-yellow-bright) 0%, var(--color-yellow-bright) 20%, var(--color-yellow-mid) 55%, var(--color-yellow-mid) 100%);
+  box-shadow: 0 0 10px var(--color-yellow-mid);
 }
   
 .bulb-color4 {
-    background-color: green;
-    box-shadow: 0 0 10px green;
+  background: radial-gradient(ellipse at center, var(--color-green-bright) 0%, var(--color-green-bright) 20%, var(--color-green-mid) 55%, var(--color-green-mid) 100%);
+  box-shadow: 0 0 10px var(--color-green-mid);
 }
 
 .bulb-color5 {
-  background-color: blue;
-  box-shadow: 0 0 10px blue;
+  background: radial-gradient(ellipse at center, var(--color-blue-bright) 0%, var(--color-blue-bright) 20%, var(--color-blue-mid) 55%, var(--color-blue-mid) 100%);
+  box-shadow: 0 0 10px var(--color-blue-mid);
 }
 
 .bulb-color6 {
-  background-color: purple;
-  box-shadow: 0 0 10px purple;
+  background: radial-gradient(ellipse at center, var(--color-purple-bright) 0%, var(--color-purple-bright) 20%, var(--color-purple-mid) 55%, var(--color-purple-mid) 100%);
+  box-shadow: 0 0 10px var(--color-purple-mid);
 }
 
 .bulb-color7 {
-  background-color: pink;
-  box-shadow: 0 0 10px pink;
+  background: radial-gradient(ellipse at center, var(--color-pink-bright) 0%, var(--color-pink-bright) 20%, var(--color-pink-mid) 55%, var(--color-pink-mid) 100%);
+  box-shadow: 0 0 10px var(--color-pink-mid);
 }
 
 .bulb-color8 {
-  background-color: white;
-  box-shadow: 0 0 10px white;
+  background: radial-gradient(ellipse at center, var(--color-white-bright) 0%, var(--color-white-bright) 20%, var(--color-white-mid) 55%, var(--color-white-mid) 100%);
+  box-shadow: 0 0 10px var(--color-white-mid);
 }
 
 .button-block {
@@ -154,27 +184,25 @@ main {
   align-self: center;
   padding: .5rem 1rem;
   margin-left: 1rem;
-  /* display: block; */
 }
 
 .button-clear {
-  background-color: darkred;
-  box-shadow: 0 0 5px darkred;
+  background-color: var(--color-red-dark);
+  box-shadow: 0 0 5px var(--color-red-dark);
 }
 
 .button-save {
-  background-color: darkgreen;
-  box-shadow: 0 0 5px darkgreen;
+  background-color: var(--color-green-dark);
+  box-shadow: 0 0 5px var(--color-green-dark);
 }
 
 .button-load {
-  background-color: darkorange;
-  box-shadow: 0 0 5px darkorange;
+  background-color: var(--color-orange-dark);
+  box-shadow: 0 0 5px var(--color-orange-dark);
 }
 
 .light-board {
   width: 100%;
-  /* height: 60vh; */
   background-color: #151515;
   padding: 2rem;
   margin: 0 auto;
@@ -238,7 +266,7 @@ main {
 }
 
 .loadMenu .control-button {
-  margin-left: 0;
+  margin: .5rem 0;
 }
 
 .loadItemButton:hover,
@@ -310,6 +338,19 @@ main {
 
   .control-button {
     margin: .25rem .5rem;
+  }
+
+  .loadMenu .loadMenuBody {
+    padding: 1.5rem;
+  }
+
+  .loadMenu h2 {
+    font-size: 1.65rem;
+    line-height: 1.2;
+  }
+
+  .loadItemButton {
+    font-size: 1.4rem;
   }
 }
 

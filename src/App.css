@@ -27,6 +27,8 @@ h1 {
   text-shadow: 0 0 5px #ffffff;
   line-height: 0.95;
   align-self: center;
+  white-space: nowrap;
+  margin-right: 3rem;
 }
 
 .wrapper {
@@ -40,7 +42,7 @@ header {
   padding: 1.5rem 3rem;
   display: flex;
   justify-content: space-between;
-  /* position: relative; */
+  align-items: center;
 }
 
 .silver-border {
@@ -54,28 +56,19 @@ main {
   margin-top: 2rem;
 }
 
-.controls {
-  flex-basis: 60%;
-  display: flex;
-  justify-content: space-between;
-  flex-grow: 1;
-  margin-left: 3rem;
-}
-
 .color-picker-block {
-  display: flex;
-  flex-wrap: wrap;
-  flex-basis: 35%;
-  flex-grow: 0;
-  flex-shrink: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 2rem);
+  grid-template-rows: repeat(2, 2rem);
+  align-items: center;
+  grid-gap: .75rem;
   margin: 0 1rem 0 0;
   padding: 0;
 }
 
 .bulb {
-  margin: .5rem;
-  width: 2rem;
-  height: 2rem;
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
   border: 1px solid rgba(255, 255, 255, 0.3);
   position: relative;
@@ -181,9 +174,9 @@ main {
 
 .light-board {
   width: 100%;
-  height: 60vh;
+  /* height: 60vh; */
   background-color: #151515;
-  padding: 1rem;
+  padding: 2rem;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(8, 2rem);
@@ -252,4 +245,88 @@ main {
 .loadItemButton:focus {
   color: orange;
   text-shadow: 0px 0px 4px orange;
+}
+
+@media (max-width: 1080px) {
+  .control-button {
+    font-size: 1.2rem;
+    padding: .25rem .5rem;
+  }
+}
+
+@media (max-width: 1010px) {
+  h1 {
+    font-size: 2.8rem;
+  }
+}
+
+@media (max-width: 910px) {
+  h1 {
+    white-space: normal;
+    margin-right: 1rem;
+    width: 30%;
+  }
+
+  .button-block {
+    flex-direction: column;
+    align-items: flex-end;
+    flex-grow: 0;
+    flex-basis: auto;
+  }
+
+  .control-button {
+    margin: .25rem 0;
+  }
+}
+
+@media (max-width: 550px) {
+  /* completely stack the header */
+  header {
+    flex-direction: column;
+  }
+
+  h1 {
+    width: 100%;
+    text-align: center;
+    white-space: nowrap;
+    font-size: 1.8rem;
+    margin: 0;
+  }
+
+  .color-picker-block {
+    grid-template-columns: repeat(8, 2rem);
+    grid-template-rows: 2rem;
+    align-items: center;
+    grid-gap: .75rem;
+    padding: 0;
+    margin: 0;
+    order: 3;
+  }
+  
+  .button-block {
+    margin: 1rem 0;
+    flex-direction: row;
+  }
+
+  .control-button {
+    margin: .25rem .5rem;
+  }
+}
+
+@media (max-width: 430px) {
+  header {
+    padding: 1.5rem 0;
+  }
+
+  .color-picker-block {
+    grid-template-columns: repeat(8, 1.5rem);
+    grid-template-rows: 1.5rem;
+    grid-gap: .5rem;
+  }
+
+  .light-board {
+    grid-template-columns: repeat(8, 1.5rem);
+    grid-template-rows: repeat(8, 1.5rem);
+    grid-gap: .5rem;
+  }
 }

@@ -10,7 +10,7 @@ class App extends Component {
     super();
 
     this.state = {
-      selectedColor: 2,
+      selectedColor: 8,
       gridArray: [],
       loadObjects: [],
     };
@@ -115,7 +115,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header changeSelectedColor={this.changeSelectedColor} resetGrid={this.newBlankArray} saveGrid={this.saveGridArray} loadGrid={this.loadGrid} loadArray={this.state.loadObjects} drawGrid={this.drawGrid} />
+        <Header changeSelectedColor={this.changeSelectedColor} resetGrid={this.newBlankArray} saveGrid={this.saveGridArray} loadGrid={this.loadGrid} loadArray={this.state.loadObjects} drawGrid={this.drawGrid} selectedColor={this.state.selectedColor} />
         <Main selectedColor={this.state.selectedColor} gridArray={this.state.gridArray} updateArrayColor={this.updateArrayColor} />
       </div>
     );

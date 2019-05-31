@@ -7,22 +7,22 @@ html {
   --color-yellow-dark: rgb(218, 218, 8);
   --color-yellow-mid: rgb(255, 255, 0);
   --color-yellow-bright: rgb(252, 252, 100);
-  --color-orange-dark: rgb(247, 136, 0);
+  --color-orange-dark: rgb(211, 85, 7);
   --color-orange-mid: rgb(255, 165, 0);
   --color-orange-bright: rgb(255, 180, 17);
-  --color-red-dark: rgb(210, 0, 0);
+  --color-red-dark: rgb(162, 0, 0);
   --color-red-mid: rgb(255, 0, 0);
   --color-red-bright: rgb(255, 51, 28);
-  --color-green-dark: rgb(20, 136, 20);
+  --color-green-dark: rgb(17, 111, 17);
   --color-green-mid: rgb(9, 157, 9);
   --color-green-bright: rgb(62, 186, 62);
-  --color-blue-dark: rgb(1, 28, 232);
+  --color-blue-dark: rgb(2, 24, 191);
   --color-blue-mid: rgb(0, 81, 255);
   --color-blue-bright: rgb(19, 105, 255);
-  --color-purple-dark: rgb(91, 1, 130);
+  --color-purple-dark: rgb(70, 1, 99);
   --color-purple-mid: rgb(135, 1, 135);
   --color-purple-bright: rgb(179, 15, 174);
-  --color-pink-dark: rgb(255, 164, 180);
+  --color-pink-dark: rgb(240, 148, 165);
   --color-pink-mid: rgb(255, 192, 203);
   --color-pink-bright: rgb(252, 206, 214);
   --color-white-dark: rgb(229, 240, 242);
@@ -96,6 +96,28 @@ main {
   padding: 0;
 }
 
+
+.light-board {
+  width: 100%;
+  background-color: var(--color-background);
+  padding: 2rem;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(8, 2rem);
+  grid-template-rows: repeat(8, 2rem);
+  grid-gap: .75rem;
+  justify-content: center;
+  align-content: center;
+}
+
+.oddRow {
+  left: .75rem;
+}
+
+.evenRow {
+  left: -.75rem;
+}
+
 .bulb {
   width: 100%;
   height: 100%;
@@ -122,6 +144,11 @@ main {
 .bulb-color0 {
   background: radial-gradient(ellipse at center, rgba(0,0,0,0.9) 0%,rgba(0,0,0,0.9) 25%,rgba(0,0,0,0) 50%,rgba(0,0,0,0) 100%);
   box-shadow: -1px 1px 3px black;
+}
+
+.bulb-color0:hover,
+.bulb-color0:focus {
+  box-shadow: 0 0 10px var(--color-orange-dark);
 }
 
 .bulb-color1 {
@@ -164,6 +191,38 @@ main {
   box-shadow: 0 0 10px var(--color-white-mid);
 }
 
+.selector-color1 {
+  background-color: var(--color-red-dark);
+}
+
+.selector-color2 {
+  background-color: var(--color-orange-dark);
+}
+
+.selector-color3 {
+  background-color: var(--color-yellow-dark);
+}
+
+.selector-color4 {
+  background-color: var(--color-green-dark);
+}
+
+.selector-color5 {
+  background-color: var(--color-blue-dark);
+}
+
+.selector-color6 {
+  background-color: var(--color-purple-dark);
+}
+
+.selector-color7 {
+  background-color: var(--color-pink-dark);
+}
+
+.selector-color8 {
+  background-color: var(--color-white-dark);
+}
+
 .button-block {
   display: flex;
   flex-basis: 50%;
@@ -176,8 +235,8 @@ main {
   appearance: none;
   border: none;
   font-family: 'Righteous', sans-serif;
-  color: white;
-  text-shadow: 0 0 4px white;
+  color: var(--color-white-bright);
+  text-shadow: 0 0 4px var(--color-white-bright);
   font-size: 1.5rem;
   text-transform: uppercase;
   border-radius: 10px;
@@ -191,9 +250,31 @@ main {
   box-shadow: 0 0 5px var(--color-red-dark);
 }
 
+.button-clear:focus,
+.button-clear:hover {
+  background-color: var(--color-red-bright);
+  box-shadow: 0 0 5px var(--color-red-bright);
+}
+
+.button-clear:active {
+  background-color: var(--color-red-mid);
+  box-shadow: 0 0 5px var(--color-red-mid);
+}
+
 .button-save {
   background-color: var(--color-green-dark);
   box-shadow: 0 0 5px var(--color-green-dark);
+}
+
+.button-save:focus,
+.button-save:hover {
+  background-color: var(--color-green-bright);
+  box-shadow: 0 0 5px var(--color-green-bright);
+}
+
+.button-save:active {
+  background-color: var(--color-green-mid);
+  box-shadow: 0 0 5px var(--color-green-mid);
 }
 
 .button-load {
@@ -201,17 +282,15 @@ main {
   box-shadow: 0 0 5px var(--color-orange-dark);
 }
 
-.light-board {
-  width: 100%;
-  background-color: #151515;
-  padding: 2rem;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(8, 2rem);
-  grid-template-rows: repeat(8, 2rem);
-  grid-gap: .75rem;
-  justify-content: center;
-  align-content: center;
+.button-load:focus,
+.button-load:hover {
+  background-color: var(--color-orange-bright);
+  box-shadow: 0 0 5px var(--color-orange-bright);
+}
+
+.button-load:active {
+  background-color: var(--color-orange-mid);
+  box-shadow: 0 0 5px var(--color-orange-mid);
 }
 
 .loadMenu,
@@ -235,8 +314,8 @@ main {
 }
 
 .modalBody {
-  background: #151515;
-  color: #fff;
+  background: var(--color-background);
+  color: var(--color-white-bright);
   text-align: center;
   padding: 2rem;
 }
@@ -250,7 +329,7 @@ main {
 }
 
 .loadMenuBody h2 {
-  text-shadow: 0px 0px 2px #fff;
+  text-shadow: 0px 0px 2px var(--color-white-bright);
 }
 
 .loadItem {
@@ -261,7 +340,7 @@ main {
   appearance: none;
   border: none;
   background-color: transparent;
-  color: white;
+  color: var(--color-white-bright);
   font-size: 1.6rem;
 }
 
@@ -271,8 +350,13 @@ main {
 
 .loadItemButton:hover,
 .loadItemButton:focus {
-  color: orange;
-  text-shadow: 0px 0px 4px orange;
+  color: var(--color-orange-mid);
+  text-shadow: 0px 0px 4px var(--color-orange-mid);
+}
+
+.loadItemButton:active {
+  color: var(--color-orange-dark);
+  text-shadow: 0px 0px 4px var(--color-orange-dark);
 }
 
 @media (max-width: 1080px) {
@@ -369,5 +453,13 @@ main {
     grid-template-columns: repeat(8, 1.5rem);
     grid-template-rows: repeat(8, 1.5rem);
     grid-gap: .5rem;
+  }
+
+  .oddRow {
+    left: .5rem;
+  }
+
+  .evenRow {
+    left: -.5rem;
   }
 }

@@ -36,14 +36,14 @@ class Header extends Component {
           <header>
             <h1>brite lites</h1>
             <div className="color-picker-block">
-              <ColorPicker color={1} changeColor={this.props.changeSelectedColor} />
-              <ColorPicker color={2} changeColor={this.props.changeSelectedColor} />
-              <ColorPicker color={3} changeColor={this.props.changeSelectedColor} />
-              <ColorPicker color={4} changeColor={this.props.changeSelectedColor} />
-              <ColorPicker color={5} changeColor={this.props.changeSelectedColor} />
-              <ColorPicker color={6} changeColor={this.props.changeSelectedColor} />
-              <ColorPicker color={7} changeColor={this.props.changeSelectedColor} />
-              <ColorPicker color={8} changeColor={this.props.changeSelectedColor} />
+              <ColorPicker color={1} changeColor={this.props.changeSelectedColor} selectedColor={this.props.selectedColor} />
+              <ColorPicker color={2} changeColor={this.props.changeSelectedColor} selectedColor={this.props.selectedColor} />
+              <ColorPicker color={3} changeColor={this.props.changeSelectedColor} selectedColor={this.props.selectedColor} />
+              <ColorPicker color={4} changeColor={this.props.changeSelectedColor} selectedColor={this.props.selectedColor} />
+              <ColorPicker color={5} changeColor={this.props.changeSelectedColor} selectedColor={this.props.selectedColor} />
+              <ColorPicker color={6} changeColor={this.props.changeSelectedColor} selectedColor={this.props.selectedColor} />
+              <ColorPicker color={7} changeColor={this.props.changeSelectedColor} selectedColor={this.props.selectedColor} />
+              <ColorPicker color={8} changeColor={this.props.changeSelectedColor} selectedColor={this.props.selectedColor} />
             </div>
 
             <ControlButtons selectedColor={this.props.selectedColor} resetGrid={this.props.resetGrid} saveGrid={this.props.saveGrid} loadGrid={this.props.loadGrid} drawGrid={this.props.drawGrid} toggleLoad={this.toggleLoadMenu} toggleModal={this.toggleModal} />

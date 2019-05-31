@@ -8,7 +8,8 @@ class ColorPicker extends Component {
   }
 
   render() {
-    const classString = "bulb bulb-color" + this.props.color;
+    let classString = "bulb selector-color" + this.props.color;
+    if (this.props.selectedColor == this.props.color) { classString = classString + " bulb-color" + this.props.color}
     return(
       <div onClick={() => this.handleClick(this.props.color)} className={classString}></div>
     );

@@ -19,7 +19,12 @@ class Bulb extends Component {
   }
 
   render() {
-    const bulbClass = "bulb bulb-color" + this.props.assignedColor;
+    let bulbClass = "bulb bulb-color" + this.props.assignedColor;
+    if (this.props.isOdd != "0") { 
+      bulbClass = bulbClass + " oddRow"; 
+    } else {
+      bulbClass = bulbClass + " evenRow";
+    }
     return(
       <div onClick={this.toggleColor} className={bulbClass}></div>
     );

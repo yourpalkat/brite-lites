@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Lato|Righteous&display=swap');
 
+/* ========== VARIABLES START ========== */
+
 html {
   --color-text: rgb(255, 255, 255);
   --color-background: #151515;
@@ -29,6 +31,10 @@ html {
   --color-white-mid: rgb(238, 250, 252);
   --color-white-bright: rgb(255, 255, 255);
 }
+
+/* ========== VARIABLES END ========== */
+
+/* ========== TYPOGRAPHY STARTS ========== */
 
 body {
   font-size: 125%;
@@ -61,6 +67,10 @@ h1 {
   margin-right: 3rem;
 }
 
+/* ========== TYPOGRAPHY ENDS ========== */
+
+/* ========== GENERAL LAYOUT AND HELPERS START ========== */
+
 .wrapper {
   width: 90%;
   max-width: 1000px;
@@ -75,6 +85,14 @@ header {
   align-items: center;
 }
 
+main {
+  margin-top: 2rem;
+}
+
+.isHidden {
+  display: none;
+}
+
 .silver-border {
   border-radius: 10px;
   padding: .5rem;
@@ -82,9 +100,9 @@ header {
   box-shadow: -1px 1px 3px rgba(0, 0, 0, 0.7);
 }
 
-main {
-  margin-top: 2rem;
-}
+/* ========== GENERAL LAYOUT AND HELPERS END ========== */
+
+/* ========== HEADER STYLES START ========== */
 
 .color-picker-block {
   display: grid;
@@ -96,6 +114,17 @@ main {
   padding: 0;
 }
 
+.button-block {
+  display: flex;
+  flex-basis: 50%;
+  flex-grow: 1;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+/* ========== HEADER STYLES END ========== */
+
+/* ========== MAIN BODY STYLES START ========== */
 
 .light-board {
   width: 100%;
@@ -117,6 +146,10 @@ main {
 .evenRow {
   left: -.75rem;
 }
+
+/* ========== MAIN BODY STYLES END ========== */
+
+/* ========== BULBS START ========== */
 
 .bulb {
   width: 100%;
@@ -223,13 +256,9 @@ main {
   background-color: var(--color-white-dark);
 }
 
-.button-block {
-  display: flex;
-  flex-basis: 50%;
-  flex-grow: 1;
-  justify-content: flex-end;
-  flex-wrap: wrap;
-}
+/* ========== BULBS END ========== */
+
+/* ========== CONTROL BUTTONS START ========== */
 
 .control-button {
   appearance: none;
@@ -293,6 +322,10 @@ main {
   box-shadow: 0 0 5px var(--color-orange-mid);
 }
 
+/* ========== CONTROL BUTTON STYLES END ========== */
+
+/* ========== MODAL STYLES START ========== */
+
 .loadMenu,
 .confirmModal {
   position: absolute;
@@ -307,10 +340,6 @@ main {
 .loadMenuBody {
   max-height: 80vh;
   overflow: scroll;
-}
-
-.isHidden {
-  display: none;
 }
 
 .modalBody {
@@ -358,6 +387,10 @@ main {
   color: var(--color-orange-dark);
   text-shadow: 0px 0px 4px var(--color-orange-dark);
 }
+
+/* ========== MODAL STYLES END ========== */
+
+/* ========== MEDIA QUERIES START ========== */
 
 @media (max-width: 1080px) {
   .control-button {

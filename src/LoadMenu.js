@@ -4,9 +4,6 @@ import LoadListItem from './LoadListItem.js'
 // this component builds the load selection menu. It receives its own isHidden state and the toggleModal method 
 // from Header.js, the DrawGrid method of App.js and the loadArray global state of App.js passed to it via props from Header.js
 class LoadMenu extends Component {
-  constructor(props){
-    super(props);
-  }
 
   // click handler for 'cancel' button hides this component by calling the toggleModal method of Header.js
   closeMenu = () => {
@@ -23,7 +20,7 @@ class LoadMenu extends Component {
       )
     });
 
-    return(optionList);
+    return optionList;
   }
 
   render(){

@@ -4,9 +4,6 @@ import React, { Component } from 'react';
 // it gets its name, the parent component's closeMenu method, and the drawGrid method of App.js passed to it
 // via props from LoadMenu.js
 class LoadListItem extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   // click handler for this component 
   selectPicture = () => {

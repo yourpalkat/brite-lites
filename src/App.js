@@ -15,6 +15,8 @@ class App extends Component {
       selectedColor: 8,
       gridArray: [],
       loadObjects: [],
+      arraySize: 8,
+      modalActive: 0,
     };
   }
   // on load, set the grid to be blank
@@ -26,9 +28,9 @@ class App extends Component {
   // the main screen is an 8x8 grid of Bulb components; the array is 8 items with each item as an array of 8
   newBlankArray = () => {
     const tempArray = [];
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < this.state.arraySize; i++) {
       const subArray = [];
-      for (let i = 0; i < 8; i++) {
+      for (let i = 0; i < this.state.arraySize; i++) {
         subArray.push(0);
       }
       tempArray.push(subArray);
@@ -48,17 +50,11 @@ class App extends Component {
     if (gridName) {
       // only allow A-Z, a-z, 0-9, or _
       const regex = /[^\w]/;
-      if ( gridName.search(regex) == -1 ) {
-        // map state.gridArray to a tempArray
-        let tempArray = this.state.gridArray.map((tempRow) => {
-          return (tempRow.map((tempColumn) => {
-            return (tempColumn);
-          }));
-        });
-        // make an object that contains that name and tempArray
+      if ( gridName.search(regex) === -1 ) {
+        // make an object that contains the user-entered name and the current gridArray
         const saveObject = {
           pictureName: gridName,
-          pictureGrid: tempArray
+          pictureGrid: this.state.gridArray
         };
         // push that object to firebase
         dbRef.push(saveObject);
@@ -100,14 +96,18 @@ class App extends Component {
     });
   }
 
+  // this toggles the tabState of everything when a modal is activated/dismissed
+  disableAllControls = (modalBit) => {
+    this.setState({
+      modalActive: modalBit,
+        })
+  }
+
   // called when a bulb component in Main is clicked on and changes color
   updateArrayColor = (row, column, newColor) => {
     // we can't alter a single value in the global state's grid array directly, so let's duplicate it
-    let tempArray = this.state.gridArray.map((tempRow) => {
-      return (tempRow.map((tempColumn) => {
-        return (tempColumn);
-      }));
-    });
+    let tempArray = [...this.state.gridArray];
+
     // target the spot in our temporary array using the row & column vallues passed in, and set it to the passed-in color
     tempArray[row][column] = newColor;
     // make the global state gridArray equal to our updated temporary array
@@ -126,8 +126,23 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header changeSelectedColor={this.changeSelectedColor} resetGrid={this.newBlankArray} saveGrid={this.saveGridArray} loadGrid={this.loadGrid} loadArray={this.state.loadObjects} drawGrid={this.drawGrid} selectedColor={this.state.selectedColor} />
-        <Main selectedColor={this.state.selectedColor} gridArray={this.state.gridArray} updateArrayColor={this.updateArrayColor} />
+        <Header 
+          changeSelectedColor={this.changeSelectedColor} 
+          resetGrid={this.newBlankArray} 
+          saveGrid={this.saveGridArray} 
+          loadGrid={this.loadGrid} 
+          loadArray={this.state.loadObjects} 
+          drawGrid={this.drawGrid} 
+          selectedColor={this.state.selectedColor} 
+          modalActive={this.state.modalActive} 
+          disableAllControls={this.disableAllControls} 
+        />
+        <Main 
+          selectedColor={this.state.selectedColor} 
+          gridArray={this.state.gridArray} 
+          updateArrayColor={this.updateArrayColor} 
+          modalActive={this.state.modalActive} 
+        />
       </div>
     );
   }

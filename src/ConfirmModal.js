@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 
 
 class ConfirmModal extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   cancelModal = () => {
     this.props.toggleModal('modal');

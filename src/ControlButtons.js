@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 // this Component makes the three load/save/clear buttons
 // it gets the resetGrid, loadGrid, saveGrid, drawGrid and toggleModal methods 
-// and the global selectedColor state passed to it via props
+// and the global selectedColor and modalActive states passed to it via props
 class ControlButtons extends Component {
   // handler for 'clear' button calls the toggleModal method of Header.js
   clearBoard = () => {
@@ -23,9 +23,9 @@ class ControlButtons extends Component {
   render(){
     return(
       <div className="button-block">
-        <button onClick={this.clearBoard} className="control-button button-clear">Clear</button>
-        <button onClick={this.loadGrid} className="control-button button-load">Load</button>
-        <button onClick={this.saveGrid} className="control-button button-save">Save</button>
+        <button onClick={this.clearBoard} className="control-button button-clear" tabIndex={this.props.modalActive}>Clear</button>
+        <button onClick={this.loadGrid} className="control-button button-load" tabIndex={this.props.modalActive}>Load</button>
+        <button onClick={this.saveGrid} className="control-button button-save" tabIndex={this.props.modalActive}>Save</button>
       </div>
     );
   }

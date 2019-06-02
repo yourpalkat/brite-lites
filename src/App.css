@@ -32,6 +32,9 @@ html {
   --color-white-dark: rgb(229, 240, 242);
   --color-white-mid: rgb(238, 250, 252);
   --color-white-bright: rgb(255, 255, 255);
+
+  min-height: 100%;
+  margin: 0;
 }
 
 /* ========== VARIABLES END ========== */
@@ -45,7 +48,8 @@ body {
   background-image: url("./assets/wood.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  min-height: 100vh;
+  min-height: 100%;
+  margin: 0;
 }
 
 h1,

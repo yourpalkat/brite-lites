@@ -60,6 +60,9 @@ class Bulb extends Component {
       case 8:
         ariaLabelString = "White";
         break;
+      default:
+        ariaLabelString = " ";
+        break;
     }
 
     return(

@@ -47,6 +47,7 @@ class Header extends Component {
     for (let i = 1; i < 9; i++) {
       colorPickerArray.push(
         <ColorPicker 
+          key={"cp" + i} 
           color={i} 
           changeColor={this.props.changeSelectedColor} 
           selectedColor={this.props.selectedColor} 

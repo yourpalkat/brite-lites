@@ -20,7 +20,9 @@ class LoadMenu extends Component {
         // pass that object's name, grid data and this component's closeMenu method to a LoadListItem component as props
         return(
           <LoadListItem key={'ll'+ index} name={pictureObject.pictureName} drawGrid={this.props.drawGrid} pictureGrid={pictureObject.pictureGrid} closeMenu={this.closeMenu} />
-        )
+        );
+      } else {
+        return null;
       }
     });
 

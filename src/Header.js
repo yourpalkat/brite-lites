@@ -6,7 +6,7 @@ import ConfirmModal from './ConfirmModal.js';
 
 // Header is the component that holds the app title, the color picker components, the load/save/clear buttons,
 // and the modals. It gets the changeSelectedColor, resetGrid, saveGrid, loadGrid, loadArray and drawGrid methods
-// and the selectedColor and modalActive global states passed to it by props
+// and the selectedColor, arraySize, and modalActive global states passed to it by props
 class Header extends Component {
   constructor(props){
     super(props);
@@ -80,6 +80,7 @@ class Header extends Component {
               drawGrid={this.props.drawGrid} 
               isHidden={this.state.loadMenuHidden} 
               toggleLoad={this.toggleModal} 
+              arraySize={this.props.arraySize} 
             />
 
             <ConfirmModal 

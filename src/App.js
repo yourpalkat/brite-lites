@@ -15,13 +15,53 @@ class App extends Component {
       selectedColor: 8,
       gridArray: [],
       loadObjects: [],
-      arraySize: 8,
+      arraySize: 0,
       modalActive: 0,
     };
   }
-  // on load, set the grid to be blank
+
+  // on first page load, set up a blank grid
   componentDidMount(){
-    this.newBlankArray();
+    const width = this.getViewportWidth();
+    // if the window is big enough, make it a 14x14 grid, otherwise, it's an 8x8 grid
+    // newBlankArray() is passed as a callback to setState because setState is asynchronous -
+    // we want to make sure setState has done it's done its job before doing what's next
+    if (width > 840) {
+      this.setState({ arraySize: 14 }, () => this.newBlankArray() );
+    } else {
+      this.setState({ arraySize: 8 }, () => this.newBlankArray() );
+    }
+    // add an event listener to monitor window resizing
+    window.addEventListener("resize", this.updateWidth);
+  }
+
+  // does what it says on the tin
+  // via https://stackoverflow.com/questions/3437786/get-the-size-of-the-screen-current-web-page-and-browser-window
+  getViewportWidth = () => {
+    let w = window,
+      d = document,
+      documentElement = d.documentElement,
+      body = d.getElementsByTagName('body')[0],
+      width = w.innerWidth || documentElement.clientWidth || body.clientWidth;
+    return width;
+  }
+
+  // called by window resize event listenter: changes grid dimensions for desktop v mobile
+  updateWidth = () => {
+    let newSize = this.state.arraySize;
+    const width = this.getViewportWidth();
+    // if the screen is large enough, grid is 14x14
+    if (width > 768) { 
+      newSize = 14; 
+    // otherwise, it's 8x8
+    } else {
+      newSize = 8;
+    }
+    // if the window has been resized to a point where the grid has to change dimensions, then:
+    if (newSize !== this.state.arraySize ) { 
+      // set the global arraySize state to the new grid size, and once that's done, generate a new array in the new size
+      this.setState({arraySize: newSize}, () => this.newBlankArray() );
+    }
   }
 
   // this function just makes a dummy blank array as an empty start state
@@ -39,6 +79,9 @@ class App extends Component {
     this.setState({
       gridArray: tempArray,
     });
+    // update the CSS variable that tells CSS Grid how many rows/columns to make
+    const html = document.getElementsByTagName('html')[0];
+    html.style.setProperty('--array-size', this.state.arraySize);
   }
 
   // saves the current state of state.gridArray to firebase with a user-submitted name
@@ -51,10 +94,11 @@ class App extends Component {
       // only allow A-Z, a-z, 0-9, or _
       const regex = /[^\w]/;
       if ( gridName.search(regex) === -1 ) {
-        // make an object that contains the user-entered name and the current gridArray
+        // make an object that contains the user-entered name, the current state of gridArray, and the grid size
         const saveObject = {
           pictureName: gridName,
-          pictureGrid: this.state.gridArray
+          pictureGrid: this.state.gridArray,
+          arraySize: this.state.arraySize,
         };
         // push that object to firebase
         dbRef.push(saveObject);
@@ -136,6 +180,7 @@ class App extends Component {
           selectedColor={this.state.selectedColor} 
           modalActive={this.state.modalActive} 
           disableAllControls={this.disableAllControls} 
+          arraySize={this.state.arraySize} 
         />
         <Main 
           selectedColor={this.state.selectedColor} 

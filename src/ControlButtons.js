@@ -10,7 +10,7 @@ class ControlButtons extends Component {
   }
   // handler for 'save' button calls the saveGridArray method of App.js
   saveGrid = () => {
-    this.props.saveGrid();
+    this.props.toggleModal('save');
   }
 
   // handler for 'load' button calls the toggleModal method of Header.js and the loadGrid method of App.js

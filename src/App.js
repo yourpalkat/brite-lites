@@ -33,6 +33,9 @@ class App extends Component {
     }
     // add an event listener to monitor window resizing
     window.addEventListener("resize", this.updateWidth);
+
+    // also, let's populate the loadObjects state with a list of what's available for loading
+    this.loadGrid();
   }
 
   // does what it says on the tin
@@ -82,28 +85,6 @@ class App extends Component {
     // update the CSS variable that tells CSS Grid how many rows/columns to make
     const html = document.getElementsByTagName('html')[0];
     html.style.setProperty('--array-size', this.state.arraySize);
-  }
-
-  // saves the current state of state.gridArray to firebase with a user-submitted name
-  saveGridArray = () => {
-    // create ref to firebase
-    const dbRef = firebase.database().ref();
-    // ask user for a name to save it under
-    const gridName = prompt("Please enter a name for your creation! Letters, numbers or underscores only, please.");
-    if (gridName) {
-      // only allow A-Z, a-z, 0-9, or _
-      const regex = /[^\w]/;
-      if ( gridName.search(regex) === -1 ) {
-        // make an object that contains the user-entered name, the current state of gridArray, and the grid size
-        const saveObject = {
-          pictureName: gridName,
-          pictureGrid: this.state.gridArray,
-          arraySize: this.state.arraySize,
-        };
-        // push that object to firebase
-        dbRef.push(saveObject);
-      }
-    }
   }
 
   // connects to firebase, adds the list of available pictures to load to the global state's loadObjects array
@@ -173,10 +154,10 @@ class App extends Component {
         <Header 
           changeSelectedColor={this.changeSelectedColor} 
           resetGrid={this.newBlankArray} 
-          saveGrid={this.saveGridArray} 
           loadGrid={this.loadGrid} 
           loadArray={this.state.loadObjects} 
           drawGrid={this.drawGrid} 
+          gridArray={this.state.gridArray} 
           selectedColor={this.state.selectedColor} 
           modalActive={this.state.modalActive} 
           disableAllControls={this.disableAllControls} 

@@ -35,6 +35,7 @@ class LoadMenu extends Component {
         <div className="modalBorder silver-border">
           <div className="loadMenuBody modalBody">
             <h2>Choose a picture!</h2>
+            <p>Note: pictures saved on phones can only be loaded on phones. Same for large images made on desktop!</p>
             { this.makeOptionList() }
             <button onClick={this.closeMenu} className="control-button button-clear" >Cancel</button>
           </div>

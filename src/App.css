@@ -337,7 +337,8 @@ main {
 
 /* ========== MODAL STYLES START ========== */
 
-.loadMenu,
+.loadMenu, 
+.saveMenu, 
 .confirmModal {
   position: absolute;
   top: 0;
@@ -368,8 +369,13 @@ main {
   transform: translate(-50%, -50%);
 }
 
-.loadMenuBody h2 {
+.loadMenuBody h2,
+.saveMenu h2 {
   text-shadow: 0px 0px 2px var(--color-white-bright);
+}
+
+.loadMenuBody p {
+  font-size: 1rem;
 }
 
 .loadItem {
@@ -397,6 +403,37 @@ main {
 .loadItemButton:active {
   color: var(--color-orange-dark);
   text-shadow: 0px 0px 4px var(--color-orange-dark);
+}
+
+.saveMenu .control-button {
+  margin: .5rem;
+}
+
+.saveMenu label {
+  font-size: 1.1rem;
+}
+
+.error {
+  font-size: 1.1rem;
+  color: var(--color-orange-mid);
+}
+
+.pictureName {
+  display: block;
+  margin: 1rem auto;
+  width: 70%;
+  appearance: none;
+  background: transparent;
+  border: 1px solid var(--color-white-dark);
+  border-radius: 4px;
+  color: var(--color-white-dark);
+  padding: .5rem .75rem;
+  font-size: 1rem;
+}
+
+.pictureName:focus {
+  border: 1px solid var(--color-green-mid);
+  box-shadow: 0px 0px 4px var(--color-green-mid);
 }
 
 /* ========== MODAL STYLES END ========== */
@@ -472,13 +509,18 @@ main {
     padding: 1.5rem;
   }
 
-  .loadMenu h2 {
+  .loadMenu h2,
+  .saveMenu h2 {
     font-size: 1.65rem;
     line-height: 1.2;
   }
 
   .loadItemButton {
     font-size: 1.4rem;
+  }
+
+  .pictureName {
+    width: 100%;
   }
 }
 

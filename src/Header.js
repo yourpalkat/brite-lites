@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ColorPicker from './ColorPicker';
 import ControlButtons from './ControlButtons.js';
 import LoadMenu from './LoadMenu.js';
+import SaveMenu from './SaveMenu.js';
 import ConfirmModal from './ConfirmModal.js';
 
 // Header is the component that holds the app title, the color picker components, the load/save/clear buttons,
@@ -13,6 +14,7 @@ class Header extends Component {
 
     this.state = {
       loadMenuHidden: true,
+      saveMenuHidden: true,
       modalHidden: true,
       clearGrid: false,
       colorPickerArray: [],
@@ -38,6 +40,12 @@ class Header extends Component {
       const newState = !this.state.loadMenuHidden;
       this.setState({
         loadMenuHidden: newState,
+      });
+    } else if (which === 'save') {
+      // if the user is being asked about saving, then show the save modal
+      const newState = !this.state.saveMenuHidden;
+      this.setState({
+        saveMenuHidden: newState,
       });
     }
   }
@@ -67,7 +75,6 @@ class Header extends Component {
             <ControlButtons 
               selectedColor={this.props.selectedColor} 
               resetGrid={this.props.resetGrid} 
-              saveGrid={this.props.saveGrid} 
               loadGrid={this.props.loadGrid} 
               drawGrid={this.props.drawGrid} 
               toggleLoad={this.toggleLoadMenu} 
@@ -82,6 +89,15 @@ class Header extends Component {
               isHidden={this.state.loadMenuHidden} 
               toggleLoad={this.toggleModal} 
               arraySize={this.props.arraySize} 
+            />
+
+            <SaveMenu
+              loadArray={this.props.loadArray}
+              isHidden={this.state.saveMenuHidden}
+              saveGrid={this.props.saveGrid} 
+              toggleSave={this.toggleModal}
+              arraySize={this.props.arraySize}
+              gridArray={this.props.gridArray} 
             />
 
             <ConfirmModal 

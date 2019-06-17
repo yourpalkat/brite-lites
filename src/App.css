@@ -476,6 +476,19 @@ main {
   /* completely stack the header */
   header {
     flex-direction: column;
+    padding: 1rem 0;
+  }
+
+  .wrapper {
+    margin: 1rem auto;
+  }
+
+  main {
+    margin-top: 1rem;
+  }
+
+  .light-board {
+    padding: 1rem;
   }
 
   h1 {
@@ -525,9 +538,6 @@ main {
 }
 
 @media (max-width: 430px) {
-  header {
-    padding: 1.5rem 0;
-  }
 
   .color-picker-block {
     grid-template-columns: repeat(8, 1.5rem);

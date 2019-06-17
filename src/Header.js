@@ -4,6 +4,7 @@ import ControlButtons from './ControlButtons.js';
 import LoadMenu from './LoadMenu.js';
 import SaveMenu from './SaveMenu.js';
 import ConfirmModal from './ConfirmModal.js';
+import SaveErrorModal from './SaveErrorModal.js';
 
 // Header is the component that holds the app title, the color picker components, the load/save/clear buttons,
 // and the modals. It gets the changeSelectedColor, resetGrid, saveGrid, loadGrid, loadArray and drawGrid methods
@@ -15,6 +16,7 @@ class Header extends Component {
     this.state = {
       loadMenuHidden: true,
       saveMenuHidden: true,
+      saveErrorHidden: true,
       modalHidden: true,
       clearGrid: false,
       colorPickerArray: [],
@@ -28,7 +30,7 @@ class Header extends Component {
     } else {
       this.props.disableAllControls(0);
     }
-    // 'which' is which thing is being asked about: clear or load
+    // 'which' is which thing is being asked about: clear, load, or save
     if (which === 'modal') {
       // clear the modal by setting this component's modalHidden to its opposite
       const newState = !this.state.modalHidden;
@@ -40,6 +42,11 @@ class Header extends Component {
       const newState = !this.state.loadMenuHidden;
       this.setState({
         loadMenuHidden: newState,
+      });
+    } else if (which === 'saveError') {
+      const newState = !this.state.saveErrorHidden;
+      this.setState({
+        saveErrorHidden: newState,
       });
     } else if (which === 'save') {
       // if the user is being asked about saving, then show the save modal
@@ -81,6 +88,7 @@ class Header extends Component {
               toggleModal={this.toggleModal} 
               modalActive={this.props.modalActive} 
               disableAllControls={this.props.disableAllControls} 
+              hasChanged={this.props.hasChanged} 
             />
 
             <LoadMenu 
@@ -98,6 +106,11 @@ class Header extends Component {
               toggleSave={this.toggleModal}
               arraySize={this.props.arraySize}
               gridArray={this.props.gridArray} 
+            />
+
+            <SaveErrorModal 
+              isHidden={this.state.saveErrorHidden} 
+              toggleModal={this.toggleModal} 
             />
 
             <ConfirmModal 

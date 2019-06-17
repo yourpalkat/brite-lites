@@ -17,6 +17,7 @@ class App extends Component {
       loadObjects: [],
       arraySize: 0,
       modalActive: 0,
+      hasChanged: false,
     };
   }
 
@@ -108,8 +109,10 @@ class App extends Component {
         newState.push(data[key]);
       }
       // assign value of temporary newState array to state.loadObjects
+      // set hasChanged global flag to false, as we're starting over
       this.setState({
-        loadObjects: newState
+        loadObjects: newState,
+        hasChanged: false,
       });
     });
   }
@@ -125,7 +128,7 @@ class App extends Component {
   disableAllControls = (modalBit) => {
     this.setState({
       modalActive: modalBit,
-        })
+    })
   }
 
   // called when a bulb component in Main is clicked on and changes color
@@ -136,8 +139,10 @@ class App extends Component {
     // target the spot in our temporary array using the row & column vallues passed in, and set it to the passed-in color
     tempArray[row][column] = newColor;
     // make the global state gridArray equal to our updated temporary array
+    // and the user has made a change, so set the hasChanged global to true
     this.setState({
       gridArray: tempArray,
+      hasChanged: true,
     });
     ;
   }
@@ -162,6 +167,7 @@ class App extends Component {
           modalActive={this.state.modalActive} 
           disableAllControls={this.disableAllControls} 
           arraySize={this.state.arraySize} 
+          hasChanged={this.state.hasChanged}
         />
         <Main 
           selectedColor={this.state.selectedColor} 
